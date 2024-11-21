@@ -1,0 +1,15 @@
+[{
+  "_id": 101,
+  "name": "J.K. Rowling",
+  "genre": "Fantasy"
+},
+{
+  "_id": 102,
+  "name": "Stephen King",
+  "genre": "Horror"
+},
+{
+  "_id": 103,
+  "name": "Dan Brown",
+  "genre": "Thriller"
+}]

@@ -1,0 +1,21 @@
+[{
+  "_id": 201,
+  "title": "Harry Potter and the Sorcerer's Stone",
+  "author_id": 101,
+  "genre": "Fantasy",
+  "published_year": 1997
+},
+{
+  "_id": 202,
+  "title": "The Shining",
+  "author_id": 102,
+  "genre": "Horror",
+  "published_year": 1977
+},
+{
+  "_id": 203,
+  "title": "The Da Vinci Code",
+  "author_id": 103,
+  "genre": "Thriller",
+  "published_year": 2003
+}]

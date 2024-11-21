@@ -1,43 +1,3 @@
-# MongoDB_Aggregation_pipeline
-
-### **MongoDB Aggregation Pipeline Overview**
-
-The aggregation pipeline is a framework for data aggregation in MongoDB. It allows you to process and transform data into meaningful results through a series of stages. Each stage processes documents and passes the result to the next stage.
-
-### **Key Stages in the Aggregation Pipeline**
-
-1. **$match**: Filters documents based on conditions, like the `WHERE` clause in SQL.
-   Example: `{ $match: { status: "active" } }`
-
-2. **$group**: Groups documents by a specified field and applies aggregation functions like `sum`, `avg`, or `count`.
-   Example: `{ $group: { _id: "$category", totalSales: { $sum: "$sales" } } }`
----
-3. **$project**: Shapes the document by including, excluding, or computing fields.
-   Example: `{ $project: { name: 1, totalPrice: { $multiply: ["$price", "$quantity"] } } }`
-
-4. **$sort**: Sorts the documents by a specific field, ascending or descending.
-   Example: `{ $sort: { totalSales: -1 } }`
-
-5. **$limit**: Limits the number of documents passed to the next stage.
-   Example: `{ $limit: 10 }`
-
-6. **$skip**: Skips a specified number of documents.
-   Example: `{ $skip: 5 }`
-
-7. **$lookup**: Performs a join operation with another collection.
-   Example: `{ $lookup: { from: "orders", localField: "userId", foreignField: "_id", as: "userOrders" } }`
----
-8. **$unwind**: Deconstructs arrays into multiple documents, one per array element.
-   Example: `{ $unwind: "$tags" }`
-
-9. **$facet**: Runs multiple pipelines on the same dataset simultaneously.
-   Example: `{ $facet: { "highSpenders": [{ $match: { spend: { $gt: 1000 } } }], "lowSpenders": [{ $match: { spend: { $lt: 1000 } } }] } }`
-
-10. **$addFields**: Adds or modifies fields in the document.
-    Example: `{ $addFields: { fullName: { $concat: ["$firstName", " ", "$lastName"] } } }`
-
-## Queries and Solutions:
-
 1. How many users are active ?
 
 ```js
@@ -351,4 +311,3 @@ db.books.aggregation([
 }
 ])
 ```
-
