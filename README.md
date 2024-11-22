@@ -352,3 +352,44 @@ db.books.aggregation([
 ])
 ```
 
+## Access of data after aggregation 
+
+- Data returned from aggregation stages is in form of a document (in JSON like format)
+```js
+db.users.aggregate([
+  { $match: { isActive: true } }, // Stage 1: Filter active users
+  { $count: "activeUsers" }       // Stage 2: Count them
+]);
+```
+The output would look like 
+```json
+[
+  { "activeUsers": 150 }
+]
+```
+
+- **When you run aggregation query in MongoDB, db doesn't return all results, rather it provides a pointer `cursor` that holds a reference to query result to client in NodeJs**
+- 
+- the `Cusor` is an object that can be iterated, converted to an array, or fetched one document at a time (in NodeJs)
+
+### Converting cursor to an Array 
+- All document results are converted into array of documetns (objects)
+```js
+  const result = await collection.aggregate([
+    { $match: { isActive: true } },
+    { $count: "activeUsers" }
+  ]).toArray(); // Converts the cursor to an array of documents
+
+  console.log(result); // Logs an array of documents
+}
+```
+  
+### Iterating over the results/cursor for each documents.
+```js
+db.collection.aggregate([
+    // ... aggregation pipeline stages {},{}
+]).forEach(function(doc) {
+    // Process each document
+    console.log(doc);
+});
+```
